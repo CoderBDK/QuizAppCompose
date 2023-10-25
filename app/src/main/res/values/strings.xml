@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Quiz App</string>
     <string name="HI">👋</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_fav">Favorite</string>
 </resources>
