@@ -27,15 +27,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coderbdk.quizapp.R
-import com.coderbdk.quizapp.ui.main.home.item.ItemRank
+import com.coderbdk.quizapp.ui.main.home.item.ItemQuiz
 import com.coderbdk.quizapp.ui.main.home.item.ItemStudy
 import com.coderbdk.quizapp.ui.theme.BackgroundColor
 import com.coderbdk.quizapp.ui.theme.CardColorRank
-import com.coderbdk.quizapp.ui.theme.QuizAppTheme
 
 @Composable
 fun HomeScreen() {
@@ -134,7 +132,8 @@ fun HomeScreen() {
                         Text(
                             text = "Exp. Points",
                             color = BackgroundColor,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
                         )
                     }
                 }
@@ -184,7 +183,8 @@ fun HomeScreen() {
                         Text(
                             text = "Ranking",
                             color = BackgroundColor,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
                         )
                     }
                 }
@@ -193,12 +193,18 @@ fun HomeScreen() {
 
 
         // item
-        ItemRank()
+        ItemQuiz()
         Text(
             text = "Continue studying",
             modifier = Modifier.padding(0.dp, 10.dp, 0.dp, 10.dp),
             color = Color(0xff642900)
         )
+        ItemStudy("Math", 12, Color(0xffe2573f))
+        ItemStudy("History", 6, Color(0xfffe9c1b))
+        ItemStudy("Biology", 20, Color(0xff44a47a))
+        ItemStudy("Math", 12, Color(0xffe2573f))
+        ItemStudy("History", 6, Color(0xfffe9c1b))
+        ItemStudy("Biology", 20, Color(0xff44a47a))
         ItemStudy("Math", 12, Color(0xffe2573f))
         ItemStudy("History", 6, Color(0xfffe9c1b))
         ItemStudy("Biology", 20, Color(0xff44a47a))
@@ -252,10 +258,3 @@ fun CircularProgress(color: Color, percent: Float) {
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun AppPreview() {
-    QuizAppTheme {
-        HomeScreen()
-    }
-}

@@ -113,7 +113,14 @@ fun MainUI() {
 fun NavigationMenu(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Home.route) {
         composable(NavigationItem.Home.route) {
-            HomeScreen()
+            LazyColumn(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                item {
+                    HomeScreen()
+                }
+            }
+
         }
         composable(NavigationItem.Profile.route) {
             ProfileScreen()
