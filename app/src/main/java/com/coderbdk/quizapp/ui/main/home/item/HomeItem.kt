@@ -1,5 +1,6 @@
 package com.coderbdk.quizapp.ui.main.home.item
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,13 +26,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.coderbdk.quizapp.ui.main.MainActivity
 import com.coderbdk.quizapp.ui.main.home.CircularProgress
+import com.coderbdk.quizapp.ui.quiz.QuizActivity
 import com.coderbdk.quizapp.ui.theme.BackgroundColor
 import com.coderbdk.quizapp.ui.theme.CardColorQuiz
 import com.coderbdk.quizapp.ui.theme.CardColorStudy
@@ -73,10 +77,13 @@ fun ItemStudy(name: String, leftQn: Int, color: Color) {
                     )
                 )
             }
+            val context = LocalContext.current
             IconButton(
                 modifier = Modifier
                     .size(50.dp),
-                onClick = { }) {
+                onClick = {
+                    context.startActivity(Intent(context,QuizActivity::class.java))
+                }) {
                 Icon(
                     Icons.Filled.KeyboardArrowRight,
                     contentDescription = "Face",
