@@ -3,4 +3,5 @@
     <string name="HI">👋</string>
     <string name="nav_home">Home</string>
     <string name="nav_fav">Favorite</string>
+    <string name="question">If David\'s age is 27 years old in 2021. What was his age in 2003?</string>
 </resources>

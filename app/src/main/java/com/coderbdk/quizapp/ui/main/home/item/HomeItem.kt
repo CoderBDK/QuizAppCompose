@@ -1,5 +1,6 @@
 package com.coderbdk.quizapp.ui.main.home.item
 
+import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -44,12 +45,13 @@ import com.coderbdk.quizapp.ui.theme.QuizAppTheme
 @Composable
 fun ItemStudy(name: String, leftQn: Int, color: Color) {
 
+    var context = LocalContext.current
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(0.dp, 0.dp, 0.dp, 10.dp)
             .clickable {
-
+                quizActivity(context,name)
             },
         colors = CardDefaults.cardColors(
             containerColor = CardColorStudy,
@@ -66,7 +68,7 @@ fun ItemStudy(name: String, leftQn: Int, color: Color) {
                 Text(
                     text = name,
                     color = Color(0xff642900),
-                    fontSize = 28.sp,
+                    fontSize = 22.sp,
                     fontWeight = FontWeight.ExtraBold
                 )
                 Text(
@@ -77,12 +79,11 @@ fun ItemStudy(name: String, leftQn: Int, color: Color) {
                     )
                 )
             }
-            val context = LocalContext.current
             IconButton(
                 modifier = Modifier
                     .size(50.dp),
                 onClick = {
-                    context.startActivity(Intent(context,QuizActivity::class.java))
+                   quizActivity(context,name)
                 }) {
                 Icon(
                     Icons.Filled.KeyboardArrowRight,
@@ -93,6 +94,12 @@ fun ItemStudy(name: String, leftQn: Int, color: Color) {
         }
 
     }
+}
+
+fun quizActivity(context: Context, name: String) {
+    val intent = Intent(context,QuizActivity::class.java)
+    intent.putExtra("name",name)
+    context.startActivity(intent)
 }
 
 @Composable
