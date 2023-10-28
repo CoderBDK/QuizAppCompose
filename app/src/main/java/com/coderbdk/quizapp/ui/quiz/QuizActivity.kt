@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -39,7 +41,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coderbdk.quizapp.ui.theme.BackgroundColor
@@ -58,7 +59,7 @@ class QuizActivity : ComponentActivity() {
         ),
         QData(
             "1 - 2 ?",
-            listOf("3", "-1", "4", "6", "7"),
+            listOf("3", "-1", "4", "6", "7", "3", "-1", "4", "6", "7", "3", "-1", "4", "6", "7"),
             2
         ),
         QData(
@@ -100,7 +101,7 @@ class QuizActivity : ComponentActivity() {
 
     @Composable
     fun MainUI(quizSubjectName: String) {
-        var nextCount = remember {
+        val nextCount = remember {
             mutableIntStateOf(0)
         }
         val isReset = remember {
@@ -179,7 +180,7 @@ class QuizActivity : ComponentActivity() {
                     )
                 }
 
-                if(nextCount.intValue < questionList.size){
+                if (nextCount.intValue < questionList.size) {
                     Text(
                         text = questionList[nextCount.intValue].question,
                         fontSize = 30.sp,
@@ -190,11 +191,25 @@ class QuizActivity : ComponentActivity() {
                         modifier = Modifier.padding(bottom = 15.dp)
                     )
                     val qData = questionList[nextCount.intValue]
-                    for ((i, option) in qData.option.withIndex()) {
-                        QuestionItem(option, i + 1, qData.correctAnsPosition, isReset, nextCount)
+                    LazyColumn {
+                        itemsIndexed(qData.option) { i, option ->
+                            QuestionItem(
+                                option,
+                                i + 1,
+                                qData.correctAnsPosition,
+                                isReset,
+                                nextCount
+                            )
+                        }
                     }
-                }else{
-                    Text(text = "Completed", fontSize = 28.sp, fontWeight = FontWeight.ExtraBold, color = CardColorRank)
+                } else {
+                    Text(
+                        text = "Completed",
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = CardColorRank
+                    )
+
                 }
 
 
@@ -282,8 +297,8 @@ class QuizActivity : ComponentActivity() {
                 }
                 IconButton(onClick = {
                     if (isAnsCorrect.value) {
-                        if (nextCount.value < questionList.size) {
-                            nextCount.value++
+                        if (nextCount.intValue < questionList.size) {
+                            nextCount.intValue++
                             isReset.value = true
                         }
                     }
@@ -318,7 +333,7 @@ class QuizActivity : ComponentActivity() {
         }
     }
 
-    @Preview(showBackground = true)
+    //@Preview(showBackground = true)
     @Composable
     fun Preview() {
         MainUI(

@@ -31,10 +31,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.coderbdk.quizapp.ui.main.MainActivity
 import com.coderbdk.quizapp.ui.main.home.CircularProgress
 import com.coderbdk.quizapp.ui.quiz.QuizActivity
 import com.coderbdk.quizapp.ui.theme.BackgroundColor
@@ -43,15 +41,15 @@ import com.coderbdk.quizapp.ui.theme.CardColorStudy
 import com.coderbdk.quizapp.ui.theme.QuizAppTheme
 
 @Composable
-fun ItemStudy(name: String, leftQn: Int, color: Color) {
+fun ItemStudy(className: String, name: String, leftQn: Int, color: Color) {
 
-    var context = LocalContext.current
+    val context = LocalContext.current
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(0.dp, 0.dp, 0.dp, 10.dp)
             .clickable {
-                quizActivity(context,name)
+                quizActivity(context, name)
             },
         colors = CardDefaults.cardColors(
             containerColor = CardColorStudy,
@@ -61,7 +59,7 @@ fun ItemStudy(name: String, leftQn: Int, color: Color) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(10.dp, 20.dp, 10.dp, 20.dp)
         ) {
-            DrawRoundText(color)
+            DrawRoundText(className, color)
             Column(
                 Modifier.weight(1f),
             ) {
@@ -83,7 +81,7 @@ fun ItemStudy(name: String, leftQn: Int, color: Color) {
                 modifier = Modifier
                     .size(50.dp),
                 onClick = {
-                   quizActivity(context,name)
+                    quizActivity(context, name)
                 }) {
                 Icon(
                     Icons.Filled.KeyboardArrowRight,
@@ -97,13 +95,13 @@ fun ItemStudy(name: String, leftQn: Int, color: Color) {
 }
 
 fun quizActivity(context: Context, name: String) {
-    val intent = Intent(context,QuizActivity::class.java)
-    intent.putExtra("name",name)
+    val intent = Intent(context, QuizActivity::class.java)
+    intent.putExtra("name", name)
     context.startActivity(intent)
 }
 
 @Composable
-fun DrawRoundText(color: Color) {
+fun DrawRoundText(subjectClass: String, color: Color) {
     Box(
         Modifier
             .padding(0.dp, 0.dp, 10.dp, 0.dp)
@@ -114,7 +112,7 @@ fun DrawRoundText(color: Color) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "A",
+                text = subjectClass,
                 style = TextStyle(
                     color = color,
                     fontWeight = FontWeight.Bold,
@@ -174,19 +172,19 @@ fun ItemQuiz() {
 
             }
 
-           Column(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight()
                     .padding(10.dp),
-               horizontalAlignment = Alignment.End,
+                horizontalAlignment = Alignment.End,
 
-            ) {
+                ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.End,
 
-                ) {
+                    ) {
                     IconButton(
                         modifier = Modifier.size(15.dp),
                         onClick = { }) {
@@ -197,7 +195,7 @@ fun ItemQuiz() {
                         )
                     }
                     Text(
-                        modifier = Modifier.padding(5.dp,0.dp),
+                        modifier = Modifier.padding(5.dp, 0.dp),
                         textAlign = TextAlign.Center,
                         text = "100 participated",
                         fontSize = 12.sp,
@@ -205,18 +203,16 @@ fun ItemQuiz() {
                     )
                 }
 
-               IconButton(
-                   onClick = { },
-               ) {
-                   Icon(
-                       Icons.Filled.KeyboardArrowRight,
-                       contentDescription = "AR",
-                       tint = BackgroundColor
-                   )
-               }
+                IconButton(
+                    onClick = { },
+                ) {
+                    Icon(
+                        Icons.Filled.KeyboardArrowRight,
+                        contentDescription = "AR",
+                        tint = BackgroundColor
+                    )
+                }
             }
-
-
 
 
         }
@@ -224,7 +220,7 @@ fun ItemQuiz() {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun AppPreview() {
     QuizAppTheme {

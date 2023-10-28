@@ -199,15 +199,9 @@ fun HomeScreen() {
             modifier = Modifier.padding(0.dp, 10.dp, 0.dp, 10.dp),
             color = Color(0xff642900)
         )
-        ItemStudy("Math", 12, Color(0xffe2573f))
-        ItemStudy("History", 6, Color(0xfffe9c1b))
-        ItemStudy("Biology", 20, Color(0xff44a47a))
-        ItemStudy("Math", 12, Color(0xffe2573f))
-        ItemStudy("History", 6, Color(0xfffe9c1b))
-        ItemStudy("Biology", 20, Color(0xff44a47a))
-        ItemStudy("Math", 12, Color(0xffe2573f))
-        ItemStudy("History", 6, Color(0xfffe9c1b))
-        ItemStudy("Biology", 20, Color(0xff44a47a))
+        ItemStudy("A","Math", 12, Color(0xffe2573f))
+        ItemStudy("B","History", 6, Color(0xfffe9c1b))
+        ItemStudy("C","Biology", 20, Color(0xff44a47a))
     }
 }
 
