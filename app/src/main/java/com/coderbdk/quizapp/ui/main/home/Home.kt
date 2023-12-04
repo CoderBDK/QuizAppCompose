@@ -38,7 +38,8 @@ import com.coderbdk.quizapp.ui.theme.CardColorRank
 @Composable
 fun HomeScreen() {
     Column(
-        modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp)
+        modifier = Modifier
+            .padding(10.dp, 10.dp, 10.dp, 10.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -50,7 +51,8 @@ fun HomeScreen() {
                     text = "${stringResource(id = R.string.HI)}Hi, Abdullah",
                     fontSize = 25.sp,
                     style = TextStyle(
-                        color = Color(0xff642900), fontWeight = FontWeight.ExtraBold
+                        color = Color(0xff642900),
+                        fontWeight = FontWeight.ExtraBold
                     )
                 )
                 Text(
@@ -91,7 +93,8 @@ fun HomeScreen() {
                 modifier = Modifier.padding(0.dp, 10.dp, 0.dp, 10.dp)
             ) {
                 Row(
-                    verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.weight(1f)
                 ) {
                     Image(
                         painterResource(R.drawable.exp_point),
@@ -100,7 +103,8 @@ fun HomeScreen() {
                         modifier = Modifier
                             .width(65.dp)
                             .height(65.dp)
-                    )/*
+                    )
+                    /*
                     IconButton(
                         modifier = Modifier
                             .padding(15.dp)
@@ -116,7 +120,8 @@ fun HomeScreen() {
                     }*/
 
                     Column(
-                        modifier = Modifier.padding(10.dp)
+                        modifier = Modifier
+                            .padding(10.dp)
                     ) {
                         Text(
                             text = "2899",
@@ -135,10 +140,12 @@ fun HomeScreen() {
                 Divider(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .width(1.dp), color = Color(0x23414141)
+                        .width(1.dp),
+                    color = Color(0x23414141)
                 )
                 Row(
-                    verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.weight(1f)
                 ) {
                     /*IconButton(
                         modifier = Modifier
@@ -164,7 +171,8 @@ fun HomeScreen() {
                             .height(65.dp)
                     )
                     Column(
-                        modifier = Modifier.padding(0.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
                     ) {
                         Text(
                             text = "26",
@@ -191,9 +199,9 @@ fun HomeScreen() {
             modifier = Modifier.padding(0.dp, 10.dp, 0.dp, 10.dp),
             color = Color(0xff642900)
         )
-        ItemStudy("A", "Math", 12, Color(0xffe2573f))
-        ItemStudy("B", "History", 6, Color(0xfffe9c1b))
-        ItemStudy("C", "Biology", 20, Color(0xff44a47a))
+        ItemStudy("A","Math", 12, Color(0xffe2573f))
+        ItemStudy("B","History", 6, Color(0xfffe9c1b))
+        ItemStudy("C","Biology", 20, Color(0xff44a47a))
     }
 }
 
@@ -202,27 +210,43 @@ fun CircularProgress(color: Color, percent: Float) {
     Box(
         contentAlignment = Alignment.Center,
     ) {
-        Canvas(modifier = Modifier
-            .width(65.dp)
-            .height(85.dp)
-            .padding(0.dp, 0.dp, 25.dp), onDraw = {
-            // progress bg
-            drawArc(
-                color = Color.White, -90f, 360 * 0.5f, useCenter = false, style = Stroke(
-                    15f, cap = StrokeCap.Round
-                ), topLeft = Offset(-125f, 0f)
-            )
-            // progress indicator
-            drawArc(
+        Canvas(
+            modifier = Modifier
+                .width(65.dp)
+                .height(85.dp)
+                .padding(0.dp, 0.dp, 25.dp),
+            onDraw = {
+                // progress bg
+                drawArc(
+                    color = Color.White,
+                    -90f,
+                    360 * 0.5f,
+                    useCenter = false,
+                    style = Stroke(
+                        15f,
+                        cap = StrokeCap.Round
+                    ),
+                    topLeft = Offset(-125f, 0f)
+                )
+                // progress indicator
+                drawArc(
 
-                color = color, -90f, 360 * percent, useCenter = false, style = Stroke(
-                    15f, cap = StrokeCap.Round
-                ), topLeft = Offset(-125f, 0f)
-            )
-        })
+                    color = color,
+                    -90f,
+                    360 * percent,
+                    useCenter = false,
+                    style = Stroke(
+                        15f,
+                        cap = StrokeCap.Round
+                    ),
+                    topLeft = Offset(-125f, 0f)
+                )
+            })
 
         Text(
-            text = "3h", color = BackgroundColor, modifier = Modifier.padding(0.dp, 0.dp, 30.dp)
+            text = "3h",
+            color = BackgroundColor,
+            modifier = Modifier.padding(0.dp, 0.dp, 30.dp)
         )
     }
 
