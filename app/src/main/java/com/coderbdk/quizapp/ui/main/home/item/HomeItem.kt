@@ -70,14 +70,19 @@ fun ItemStudy(className: String, name: String, leftQn: Int, color: Color) {
                     fontWeight = FontWeight.ExtraBold
                 )
                 Text(
-                    text = "$leftQn question left", style = TextStyle(
-                        color = Color(0xFF966E53), fontWeight = FontWeight.Bold
+                    text = "$leftQn question left",
+                    style = TextStyle(
+                        color = Color(0xFF966E53),
+                        fontWeight = FontWeight.Bold
                     )
                 )
             }
-            IconButton(modifier = Modifier.size(50.dp), onClick = {
-                quizActivity(context, name)
-            }) {
+            IconButton(
+                modifier = Modifier
+                    .size(50.dp),
+                onClick = {
+                    quizActivity(context, name)
+                }) {
                 Icon(
                     Icons.Filled.KeyboardArrowRight,
                     contentDescription = "Face",
@@ -107,12 +112,16 @@ fun DrawRoundText(subjectClass: String, color: Color) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = subjectClass, style = TextStyle(
-                    color = color, fontWeight = FontWeight.Bold, fontSize = 25.sp
+                text = subjectClass,
+                style = TextStyle(
+                    color = color,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp
                 )
             )
             Text(
-                text = "class", style = TextStyle(
+                text = "class",
+                style = TextStyle(
                     color = color,
                 )
             )
@@ -142,17 +151,22 @@ fun ItemQuiz() {
         ) {
 
             Row(
-                Modifier.padding(0.dp, 10.dp), verticalAlignment = Alignment.CenterVertically
+                Modifier.padding(0.dp, 10.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 CircularProgress(color = CardColorQuiz, 0.1f)
                 Column(
                     Modifier.padding(0.dp)
                 ) {
                     Text(
-                        text = "Daily Quiz", fontSize = 18.sp, color = BackgroundColor
+                        text = "Daily Quiz",
+                        fontSize = 18.sp,
+                        color = BackgroundColor
                     )
                     Text(
-                        text = "20 mixed questions", fontSize = 14.sp, color = BackgroundColor
+                        text = "20 mixed questions",
+                        fontSize = 14.sp,
+                        color = BackgroundColor
                     )
                 }
 
@@ -171,9 +185,13 @@ fun ItemQuiz() {
                     horizontalArrangement = Arrangement.End,
 
                     ) {
-                    IconButton(modifier = Modifier.size(15.dp), onClick = { }) {
+                    IconButton(
+                        modifier = Modifier.size(15.dp),
+                        onClick = { }) {
                         Icon(
-                            Icons.Filled.Face, contentDescription = "Face", tint = BackgroundColor
+                            Icons.Filled.Face,
+                            contentDescription = "Face",
+                            tint = BackgroundColor
                         )
                     }
                     Text(

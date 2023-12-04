@@ -55,7 +55,8 @@ class MainActivity : ComponentActivity() {
             QuizAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
                 ) {
                     MainUI()
                 }
@@ -93,7 +94,10 @@ class MainActivity : ComponentActivity() {
             Box(
                 modifier = Modifier.padding(
                     PaddingValues(
-                        0.dp, 0.dp, 0.dp, padding.calculateBottomPadding()
+                        0.dp,
+                        0.dp,
+                        0.dp,
+                        padding.calculateBottomPadding()
                     )
                 )
             ) {
@@ -153,7 +157,9 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun BottomNavigationBar(navController: NavController) {
         val items = listOf(
-            NavigationItem.Home, NavigationItem.Profile, NavigationItem.Help
+            NavigationItem.Home,
+            NavigationItem.Profile,
+            NavigationItem.Help
         )
         var selectedItem by remember { mutableIntStateOf(0) }
         var currentRoute by remember { mutableStateOf(NavigationItem.Home.route) }
@@ -169,7 +175,8 @@ class MainActivity : ComponentActivity() {
         ) {
             items.forEachIndexed { index, item ->
 
-                NavigationBarItem(alwaysShowLabel = true,
+                NavigationBarItem(
+                    alwaysShowLabel = true,
                     icon = { Icon(item.icon!!, contentDescription = item.title) },
                     label = { Text(item.title) },
                     selected = selectedItem == index,
@@ -189,7 +196,8 @@ class MainActivity : ComponentActivity() {
                             launchSingleTop = true
                             restoreState = true
                         }
-                    })
+                    }
+                )
             }
         }
     }
