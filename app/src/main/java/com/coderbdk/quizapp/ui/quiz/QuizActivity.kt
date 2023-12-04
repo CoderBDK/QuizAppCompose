@@ -53,24 +53,15 @@ class QuizActivity : ComponentActivity() {
     private val activity = this
     private val questionList = listOf<QData>(
         QData(
-            "1 + 2 ?",
-            listOf("3", "5", "4", "6"),
-            1
-        ),
-        QData(
+            "1 + 2 ?", listOf("3", "5", "4", "6"), 1
+        ), QData(
             "1 - 2 ?",
             listOf("3", "-1", "4", "6", "7", "3", "-1", "4", "6", "7", "3", "-1", "4", "6", "7"),
             2
-        ),
-        QData(
-            "1 * 2 ?",
-            listOf("3", "-1", "2", "6"),
-            3
-        ),
-        QData(
-            "12 / 2 ?",
-            listOf("3", "-1", "2", "6"),
-            4
+        ), QData(
+            "1 * 2 ?", listOf("3", "-1", "2", "6"), 3
+        ), QData(
+            "12 / 2 ?", listOf("3", "-1", "2", "6"), 4
         )
     )
 
@@ -88,8 +79,7 @@ class QuizActivity : ComponentActivity() {
             QuizAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
                     MainUI(
                         quizSubjectName = intent.getStringExtra("name") ?: "Not found"
@@ -113,21 +103,16 @@ class QuizActivity : ComponentActivity() {
                 .background(BackgroundColor)
         ) {
             Column(
-                modifier = Modifier
-                    .padding(15.dp, 0.dp, 15.dp)
+                modifier = Modifier.padding(15.dp, 0.dp, 15.dp)
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth(1f)
+                    modifier = Modifier.fillMaxWidth(1f)
 
                 ) {
-                    IconButton(
-                        modifier = Modifier
-                            .size(50.dp),
-                        onClick = {
-                            activity.finish()
-                        }) {
+                    IconButton(modifier = Modifier.size(50.dp), onClick = {
+                        activity.finish()
+                    }) {
                         Icon(
                             Icons.Filled.KeyboardArrowLeft,
                             contentDescription = "Face",
@@ -145,20 +130,14 @@ class QuizActivity : ComponentActivity() {
                             fontWeight = FontWeight.ExtraBold
                         )
                     )
-                    Text(
-                        text = "Skip",
-                        style = TextStyle(
-                            color = Color(0xfff0a671),
-                            fontWeight = FontWeight.Bold
-                        ),
-                        modifier = Modifier
-                            .clickable {
-                                if (nextCount.intValue < questionList.size - 1) {
-                                    nextCount.intValue++
-                                    isReset.value = true
-                                }
-                            }
-                    )
+                    Text(text = "Skip", style = TextStyle(
+                        color = Color(0xfff0a671), fontWeight = FontWeight.Bold
+                    ), modifier = Modifier.clickable {
+                        if (nextCount.intValue < questionList.size - 1) {
+                            nextCount.intValue++
+                            isReset.value = true
+                        }
+                    })
                 }
 
                 LinearProgress(nextCount.intValue * 1f / questionList.size)
@@ -185,8 +164,7 @@ class QuizActivity : ComponentActivity() {
                         text = questionList[nextCount.intValue].question,
                         fontSize = 30.sp,
                         style = TextStyle(
-                            color = Color(0xff642900),
-                            fontWeight = FontWeight.ExtraBold
+                            color = Color(0xff642900), fontWeight = FontWeight.ExtraBold
                         ),
                         modifier = Modifier.padding(bottom = 15.dp)
                     )
@@ -194,11 +172,7 @@ class QuizActivity : ComponentActivity() {
                     LazyColumn {
                         itemsIndexed(qData.option) { i, option ->
                             QuestionItem(
-                                option,
-                                i + 1,
-                                qData.correctAnsPosition,
-                                isReset,
-                                nextCount
+                                option, i + 1, qData.correctAnsPosition, isReset, nextCount
                             )
                         }
                     }
@@ -238,10 +212,9 @@ class QuizActivity : ComponentActivity() {
             isAnsCorrect.value = false
         }
 
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 10.dp, bottom = 10.dp),
+        Card(modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 10.dp, bottom = 10.dp),
             colors = CardDefaults.cardColors(
                 containerColor = if (isAnsCorrect.value) CardColorQuiz else CardColorRank,
             ),
@@ -250,19 +223,16 @@ class QuizActivity : ComponentActivity() {
                     isAnsCorrect.value = true
                     isReset.value = false
                 }
-            }
-        ) {
+            }) {
             Row(
-                Modifier
-                    .padding(start = 20.dp, top = 15.dp, bottom = 15.dp),
+                Modifier.padding(start = 20.dp, top = 15.dp, bottom = 15.dp),
                 verticalAlignment = Alignment.CenterVertically,
 
 
                 ) {
 
                 Column(
-                    modifier = Modifier
-                        .weight(1f)
+                    modifier = Modifier.weight(1f)
                 ) {
                     Text(
                         text = option,
